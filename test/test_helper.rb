@@ -1,5 +1,6 @@
 require "minitest/autorun"
 require "minitest/emoji"
+require "iso639"
 
 # Borrowed from https://gist.github.com/4369168
 MiniTest::Emoji::DEFAULT.merge!(
