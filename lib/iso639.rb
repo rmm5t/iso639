@@ -38,15 +38,26 @@ module Iso639
   iso639_file = File.expand_path(File.join("..", "iso639", "ISO-639-2_utf-8.txt"), __FILE__)
   File.readlines(iso639_file).each do |line|
     lang = Language.new *line.split("|")
-    LanguagesByAlpha2[lang.alpha2.downcase.strip]          = lang if lang.alpha2
-    LanguagesByAlpha3[lang.alpha3.downcase.strip]          = lang if lang.alpha3
-    LanguagesByAlpha3Terminology[lang.alpha3_terminology.downcase.strip] = lang if lang.alpha3_terminology
-    LanguagesByName[lang.name.downcase.strip]              = lang if lang.name
-    LanguagesByFrenchName[lang.french_name.downcase.strip] = lang if lang.french_name
+    LanguagesByAlpha2[lang.alpha2]          = lang if lang.alpha2
+    LanguagesByAlpha3[lang.alpha3]          = lang if lang.alpha3
+    LanguagesByAlpha3Terminology[lang.alpha3_terminology] = lang if lang.alpha3_terminology
+    LanguagesByName[lang.name]              = lang if lang.name
+    LanguagesByFrenchName[lang.french_name] = lang if lang.french_name
   end
 
-  def self.[](alpha_code_or_name)
-    lookup = alpha_code_or_name.to_s.downcase.strip
+  # Public: Find a language by any common lookup value
+  #
+  # lookup - A String representing an alpha-2, alpha-3, or language name
+  #
+  # Examples
+  #
+  #   Iso639["en"].alpha3        # => "eng"
+  #   Iso639["English"].alpha2   # => "en"
+  #   Iso639["FRENCH"].alpha3    # => "fre"
+  #   Iso639["deu"].alpha3       # => "ger"
+  #
+  # Returns an Iso639::Language object
+  def self.[](lookup)
     LanguagesByAlpha2[lookup] ||
       LanguagesByAlpha3Bibliographic[lookup] ||
       LanguagesByAlpha3Terminology[lookup] ||

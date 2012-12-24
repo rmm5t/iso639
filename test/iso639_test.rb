@@ -78,7 +78,21 @@ describe Iso639 do
     assert_equal "en", Iso639["EN"].alpha2
     assert_equal "fr", Iso639["fre"].alpha2
     assert_equal "fr", Iso639["fra"].alpha2
-    assert_equal "fr", Iso639["FRENCH"].alpha2
+    assert_equal "fr", Iso639["French"].alpha2
     assert_equal "fr", Iso639["français"].alpha2
+  end
+
+  it "should ignore case sensitivity" do
+    assert_equal "en", Iso639["EN"].alpha2
+    assert_equal "fr", Iso639["Fre"].alpha2
+    assert_equal "fr", Iso639["FRA"].alpha2
+    assert_equal "fr", Iso639["french"].alpha2
+  end
+
+  it "should ignore whitespace" do
+    assert_equal "en", Iso639[" en"].alpha2
+    assert_equal "fr", Iso639["\tfre\t"].alpha2
+    assert_equal "fr", Iso639["   fra   "].alpha2
+    assert_equal "fr", Iso639[" french\t"].alpha2
   end
 end
