@@ -1,4 +1,5 @@
 require "iso639/version"
+require "iso639/insensitive_hash"
 
 # Public: Various methods useful for performing ISO-639 language code lookup
 # either given their ISO-639-1 or ISO-639-2 character code value or from human
@@ -50,5 +51,29 @@ module Iso639
       val = val.strip if val
       return val unless val.nil? || val.empty?
     end
+  end
+
+  LanguagesByAlpha2 = InsensitiveHash.new
+  LanguagesByAlpha3Bibliographic = LanguagesByAlpha3 = InsensitiveHash.new
+  LanguagesByAlpha3Terminology = InsensitiveHash.new
+  LanguagesByEnglishName = LanguagesByName = InsensitiveHash.new
+  LanguagesByFrenchName = InsensitiveHash.new
+
+  File.readlines(File.expand_path(File.join("..", "iso639", "ISO-639-2_utf-8.txt"), __FILE__)).each do |line|
+    lang = Language.new *line.split("|")
+    LanguagesByAlpha2[lang.alpha2.downcase.strip]          = lang if lang.alpha2
+    LanguagesByAlpha3[lang.alpha3.downcase.strip]          = lang if lang.alpha3
+    LanguagesByAlpha3Terminology[lang.alpha3_terminology.downcase.strip] = lang if lang.alpha3_terminology
+    LanguagesByName[lang.name.downcase.strip]              = lang if lang.name
+    LanguagesByFrenchName[lang.french_name.downcase.strip] = lang if lang.french_name
+  end
+
+  def self.[](alpha_code_or_name)
+    lookup = alpha_code_or_name.to_s.downcase.strip
+    LanguagesByAlpha2[lookup] ||
+      LanguagesByAlpha3Bibliographic[lookup] ||
+      LanguagesByAlpha3Terminology[lookup] ||
+      LanguagesByEnglishName[lookup] ||
+      LanguagesByFrenchName[lookup]
   end
 end
