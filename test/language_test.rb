@@ -39,6 +39,18 @@ describe Iso639::Language do
     assert_equal "English", "#{lang}"
   end
 
+  it "should handle multiple english names" do
+    lang = Iso639::Language.new "", "", "", "Spanish; Castilian", ""
+    assert_equal "Spanish", lang.name
+    assert_equal ["Spanish", "Castilian"], lang.english_names
+  end
+
+  it "should handle multiple french names" do
+    lang = Iso639::Language.new "", "", "", "", "espagnol; castillan"
+    assert_equal "espagnol", lang.french_name
+    assert_equal ["espagnol", "castillan"], lang.french_names
+  end
+
   it "should not be mutable" do
     lang = Iso639::Language.new("eng", nil, "en", "English", "anglais").freeze
     begin

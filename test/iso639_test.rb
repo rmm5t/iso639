@@ -52,7 +52,7 @@ describe Iso639::LanguagesByEnglishName do
     assert_equal "German",  Iso639::LanguagesByName["german"].name
     assert_equal "spa",     Iso639::LanguagesByName["spanish"].alpha3
     assert_equal "klingon", Iso639::LanguagesByName["Klingon"].french_name
-    assert_equal "Klingon; tlhIngan-Hol", Iso639::LanguagesByName["tlhIngan-Hol"].name
+    assert_equal "Klingon", Iso639::LanguagesByName["tlhIngan-Hol"].name
   end
 
   it "should return nil for unknown codes" do
