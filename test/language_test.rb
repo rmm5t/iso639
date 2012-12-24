@@ -15,13 +15,13 @@ describe Iso639::Language do
 
   it "should assign the proper accessor from the constructor" do
     lang = Iso639::Language.new "fre", "fra", "fr", "French", "français"
-    assert "fre",      lang.alpha3_bibliographic
-    assert "fre",      lang.alpha3
-    assert "fra",      lang.alpha3_terminology
-    assert "fr",       lang.alpha2
-    assert "French",   lang.english_name
-    assert "French",   lang.name
-    assert "français", lang.french_name
+    assert_equal "fre",      lang.alpha3_bibliographic
+    assert_equal "fre",      lang.alpha3
+    assert_equal "fra",      lang.alpha3_terminology
+    assert_equal "fr",       lang.alpha2
+    assert_equal "French",   lang.english_name
+    assert_equal "French",   lang.name
+    assert_equal "français", lang.french_name
   end
 
   it "should resolve blank values to nil" do
