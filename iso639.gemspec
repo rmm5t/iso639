@@ -18,6 +18,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_development_dependency "minitest",       "~> 4.3"
-  gem.add_development_dependency "minitest-emoji", "~> 1.0"
   gem.add_development_dependency "rake",           "~> 10.0"
 end
