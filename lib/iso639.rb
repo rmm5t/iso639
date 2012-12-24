@@ -5,6 +5,9 @@ require "iso639/insensitive_hash"
 # either given their ISO-639-1 or ISO-639-2 character code value or from human
 # input.
 #
+# Language code mappings came from
+# http://loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt
+#
 # Examples
 #
 #   Iso639["en"]                          # => #<Iso639::Language:...>
