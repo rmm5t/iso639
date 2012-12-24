@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.version       = Iso639::VERSION
   gem.authors       = ["Ryan McGeary"]
   gem.email         = ["ryan@mcgeary.org"]
-  gem.description   = %q{ISO 639-1 and ISO 639-2 lookups by name}
+  gem.description   = %q{ISO 639-1 and ISO 639-2 lookups by name, alpha-2 code, or alpha-3 code}
   gem.summary       = gem.description
   gem.homepage      = "https://github.com/rmm5t/iso639"
 

@@ -29,7 +29,7 @@ $ gem install iso639
 require "iso639"
 
 # Lookup by alpha-2 codes
-Iso639["en"]                          # => <Iso639>
+Iso639["en"]                          # => #<Iso639::Language:...>
 Iso639["en"].alpha2                   # => "en"
 Iso639["en"].alpha3                   # => "eng"
 Iso639["en"].alpha3_bibliographic     # => "eng"
@@ -38,8 +38,8 @@ Iso639["en"].name                     # => "English"
 Iso639["en"].english_name             # => "English"
 Iso639["en"].french_name              # => "anglais"
 
-# Lookup by alpha-3 codes
-Iso639["fre"]                         # => <Iso639>
+# Lookup by alpha-3-bibliographic codes
+Iso639["fre"]                         # => #<Iso639::Language:...>
 Iso639["fre"].alpha2                  # => "fr"
 Iso639["fre"].alpha3                  # => "fre"
 Iso639["fre"].alpha3_bibliographic    # => "fre"
@@ -48,8 +48,18 @@ Iso639["fre"].name                    # => "French"
 Iso639["fre"].english_name            # => "French"
 Iso639["fre"].french_name             # => "français"
 
+# Lookup by alpha-3-terminology codes
+Iso639["fra"]                         # => #<Iso639::Language:...>
+Iso639["fra"].alpha2                  # => "fr"
+Iso639["fra"].alpha3                  # => "fre"
+Iso639["fra"].alpha3_bibliographic    # => "fre"
+Iso639["fra"].alpha3_terminology      # => "fra"
+Iso639["fra"].name                    # => "French"
+Iso639["fra"].english_name            # => "French"
+Iso639["fra"].french_name             # => "français"
+
 # Lookup by name
-Iso639["German"]                      # => <Iso639>
+Iso639["German"]                      # => #<Iso639::Language:...>
 Iso639["German"].alpha2               # => "de"
 Iso639["German"].alpha3               # => "ger"
 Iso639["German"].alpha3_bibliographic # => "ger"
