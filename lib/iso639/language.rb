@@ -19,6 +19,10 @@ module Iso639
       @french_name          = strip_to_nil(french_name)
     end
 
+    def to_s
+      name
+    end
+
     private
 
     def strip_to_nil(val)

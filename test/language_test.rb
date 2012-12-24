@@ -33,6 +33,12 @@ describe Iso639::Language do
     assert_nil lang.french_name
   end
 
+  it "should return english name for #to_s" do
+    lang = Iso639::Language.new "", "", "", "English", ""
+    assert_equal "English", lang.to_s
+    assert_equal "English", "#{lang}"
+  end
+
   it "should not be mutable" do
     lang = Iso639::Language.new("eng", nil, "en", "English", "anglais").freeze
     begin

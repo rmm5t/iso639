@@ -11,7 +11,7 @@ require "iso639/insensitive_hash"
 #
 # Examples
 #
-#   Iso639["en"]                          # => #<Iso639::Language:...>
+#   Iso639["en"]                          # => "English"
 #   Iso639["en"].alpha2                   # => "en"
 #   Iso639["en"].alpha3                   # => "eng"
 #   Iso639["en"].alpha3_bibliographic     # => "eng"
@@ -20,7 +20,7 @@ require "iso639/insensitive_hash"
 #   Iso639["en"].english_name             # => "English"
 #   Iso639["en"].french_name              # => "anglais"
 #
-#   Iso639["German"]                      # => #<Iso639::Language:...>
+#   Iso639["German"]                      # => "German"
 #   Iso639["German"].alpha2               # => "de"
 #   Iso639["German"].alpha3               # => "ger"
 #   Iso639["German"].alpha3_bibliographic # => "ger"
@@ -51,6 +51,7 @@ module Iso639
   #
   # Examples
   #
+  #   Iso639["en"]               # => "English"
   #   Iso639["en"].alpha3        # => "eng"
   #   Iso639["English"].alpha2   # => "en"
   #   Iso639["FRENCH"].alpha3    # => "fre"
