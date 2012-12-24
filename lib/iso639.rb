@@ -59,7 +59,8 @@ module Iso639
   LanguagesByEnglishName = LanguagesByName = InsensitiveHash.new
   LanguagesByFrenchName = InsensitiveHash.new
 
-  File.readlines(File.expand_path(File.join("..", "iso639", "ISO-639-2_utf-8.txt"), __FILE__)).each do |line|
+  iso639_file = File.expand_path(File.join("..", "iso639", "ISO-639-2_utf-8.txt"), __FILE__)
+  File.readlines(iso639_file, mode: "r:UTF-8").each do |line|
     lang = Language.new *line.split("|")
     LanguagesByAlpha2[lang.alpha2.downcase.strip]          = lang if lang.alpha2
     LanguagesByAlpha3[lang.alpha3.downcase.strip]          = lang if lang.alpha3
