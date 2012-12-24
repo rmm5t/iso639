@@ -1,4 +1,4 @@
-# iso639
+# iso639 [![Build Status](https://travis-ci.org/rmm5t/iso639.png?branch=master)](https://travis-ci.org/rmm5t/iso639)
 
 The iso639 gem provides convenience methods for looking up ISO-639-1 or
 ISO-639-2 language codes by their english name, 2-char, or 3-char counterpart
