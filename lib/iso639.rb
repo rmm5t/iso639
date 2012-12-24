@@ -41,8 +41,12 @@ module Iso639
     LanguagesByAlpha2[lang.alpha2]          = lang if lang.alpha2
     LanguagesByAlpha3[lang.alpha3]          = lang if lang.alpha3
     LanguagesByAlpha3Terminology[lang.alpha3_terminology] = lang if lang.alpha3_terminology
-    LanguagesByName[lang.name]              = lang if lang.name
-    LanguagesByFrenchName[lang.french_name] = lang if lang.french_name
+    lang.name.split(/;\s*/).each do |name|
+      LanguagesByName[name] = lang
+    end
+    lang.french_name.split(/;\s*/).each do |name|
+      LanguagesByFrenchName[name] = lang
+    end
   end
 
   # Public: Find a language by any common lookup value

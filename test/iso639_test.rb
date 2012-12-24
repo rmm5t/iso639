@@ -46,10 +46,13 @@ end
 
 describe Iso639::LanguagesByEnglishName do
   it "should return valid languages by name" do
-    assert_equal "en",    Iso639::LanguagesByName["ENGLISH"].alpha2
-    assert_equal "fre",    Iso639::LanguagesByName["French"].alpha3
-    assert_equal "German", Iso639::LanguagesByName["German"].name
-    assert_equal "German", Iso639::LanguagesByName["german"].name
+    assert_equal "en",      Iso639::LanguagesByName["ENGLISH"].alpha2
+    assert_equal "fre",     Iso639::LanguagesByName["French"].alpha3
+    assert_equal "German",  Iso639::LanguagesByName["German"].name
+    assert_equal "German",  Iso639::LanguagesByName["german"].name
+    assert_equal "spa",     Iso639::LanguagesByName["spanish"].alpha3
+    assert_equal "klingon", Iso639::LanguagesByName["Klingon"].french_name
+    assert_equal "Klingon; tlhIngan-Hol", Iso639::LanguagesByName["tlhIngan-Hol"].name
   end
 
   it "should return nil for unknown codes" do
