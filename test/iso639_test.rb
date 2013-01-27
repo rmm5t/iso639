@@ -36,10 +36,13 @@ describe Iso639::LanguagesByAlpha3Terminology do
     assert_equal "German", Iso639::LanguagesByAlpha3Terminology["DEU"].name
   end
 
+  it "should return valid languages by alpha-3 terminology code when it matches the bibliographic" do
+    assert_equal "English", Iso639::LanguagesByAlpha3Terminology["eng"].name
+  end
+
   it "should return nil for unknown codes" do
     assert_nil Iso639::LanguagesByAlpha3Terminology["xxx"]
     assert_nil Iso639::LanguagesByAlpha3Terminology["en"]
-    assert_nil Iso639::LanguagesByAlpha3Terminology["eng"]
     assert_nil Iso639::LanguagesByAlpha3Terminology["English"]
   end
 end

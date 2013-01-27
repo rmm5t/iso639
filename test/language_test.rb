@@ -33,6 +33,12 @@ describe Iso639::Language do
     assert_nil lang.french_name
   end
 
+  it "should assign bibliographic value to terminology if no terminolgy value" do
+    lang = Iso639::Language.new "eng", "", "en", "English", "anglais"
+    assert_equal "eng", lang.alpha3_bibliographic
+    assert_equal "eng", lang.alpha3_terminology
+  end
+
   it "should return english name for #to_s" do
     lang = Iso639::Language.new "", "", "", "English", ""
     assert_equal "English", lang.to_s

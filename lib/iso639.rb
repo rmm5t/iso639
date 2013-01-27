@@ -15,7 +15,7 @@ require "iso639/insensitive_hash"
 #   Iso639["en"].alpha2                   # => "en"
 #   Iso639["en"].alpha3                   # => "eng"
 #   Iso639["en"].alpha3_bibliographic     # => "eng"
-#   Iso639["en"].alpha3_terminology       # => nil
+#   Iso639["en"].alpha3_terminology       # => "eng"
 #   Iso639["en"].name                     # => "English"
 #   Iso639["en"].english_name             # => "English"
 #   Iso639["en"].french_name              # => "anglais"

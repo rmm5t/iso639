@@ -12,7 +12,7 @@ module Iso639
     # french_names - A String representing the French names (semi-colon delimited)
     def initialize(alpha3_bibliographic, alpha3_terminology, alpha2, english_names, french_names)
       @alpha3_bibliographic = strip_to_nil(alpha3_bibliographic)
-      @alpha3_terminology   = strip_to_nil(alpha3_terminology)
+      @alpha3_terminology   = strip_to_nil(alpha3_terminology) || @alpha3_bibliographic
       @alpha2               = strip_to_nil(alpha2)
       @english_names        = split_and_strip(english_names)
       @french_names         = split_and_strip(french_names)
