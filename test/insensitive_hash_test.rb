@@ -7,8 +7,8 @@ describe Iso639::InsensitiveHash do
     hash["Bar"] = "another thing"
     hash["BAZ"] = "last thing"
 
-    assert_equal hash["foo"], hash["FOO"]
-    assert_equal hash["BAR"], hash["bar"]
-    assert_equal hash["Baz"], hash["baz"]
+    assert_equal "one thing",     hash["FOO"]
+    assert_equal "another thing", hash["bar"]
+    assert_equal "last thing",    hash["baz"]
   end
 end
