@@ -1,5 +1,3 @@
-require "minitest/pride"
 require "minitest/autorun"
-require "coveralls"
-Coveralls.wear!
+require "minitest/pride"
 require "iso639"
