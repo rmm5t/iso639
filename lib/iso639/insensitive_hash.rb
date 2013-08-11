@@ -1,11 +1,17 @@
 module Iso639
   class InsensitiveHash < Hash # :nodoc:
     def [](key)
-      super(key.to_s.downcase.strip)
+      super normalize(key)
     end
 
     def []=(key, value)
-      super(key.to_s.downcase.strip, value)
+      super normalize(key), value
+    end
+
+    private
+
+    def normalize(key)
+      key.to_s.downcase.strip.split("_").first
     end
   end
 end

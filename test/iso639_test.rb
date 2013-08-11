@@ -101,4 +101,11 @@ describe Iso639 do
     assert_equal "fr", Iso639["   fra   "].alpha2
     assert_equal "fr", Iso639[" french\t"].alpha2
   end
+
+  it "should ignore regional designations" do
+    assert_equal "en", Iso639["en_US"].alpha2
+    assert_equal "en", Iso639["en_GB"].alpha2
+    assert_equal "fr", Iso639["fr_CA"].alpha2
+    assert_equal "fr", Iso639["fr_FR"].alpha2
+  end
 end
