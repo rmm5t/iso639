@@ -3,20 +3,23 @@
 The iso639 gem provides convenience methods for looking up ISO-639-1 or
 ISO-639-2 language codes by their english name, 2-char, or 3-char counterpart
 
+All data was generated from the Library of Congress's list of UTF-8
+[**Codes for the Representation of Names of Languages**](http://www.loc.gov/standards/iso639-2/ascii_8bits.html).
+
 ---
 
 **How You Can Help**
 
 [![Square Cash](http://img.shields.io/badge/square%20cash-$rmm5t-brightgreen.svg)][square]
-[![Gratipay](http://img.shields.io/gratipay/rmm5t.svg)][gratipay]
+[![PayPal](http://img.shields.io/badge/paypal-rmm5t-blue.svg)][paypal]
 [![Book a Codementor session](http://img.shields.io/badge/codementor-book%20a%20session-orange.svg)][codementor]
 
-If you like this project, [buy me a coffee][square], [donate via Gratipay][gratipay], or [book a session with me on Codementor][codementor].
+If you like this project, [buy me a coffee][paypal], or [book a session with me on Codementor][codementor].
 
 Bitcoin: `1rmm5tv6f997JK5bLcGbRCZyVjZUPkQ2m`
 
 [square]: https://cash.me/$rmm5t "Donate to rmm5t for open source!"
-[gratipay]: https://gratipay.com/rmm5t/ "Donate to rmm5t for open source!"
+[paypal]: https://www.paypal.me/rmm5t/5 "Donate to rmm5t for open source!"
 [bitcoin]: bitcoin:1rmm5tv6f997JK5bLcGbRCZyVjZUPkQ2m?amount=0.01&label=Coffee%20to%20rmm5t%20for%20Open%20Source "Buy rmm5t a coffee for open source!"
 [codementor]: https://www.codementor.io/rmm5t?utm_campaign=profile&utm_source=button-rmm5t&utm_medium=shields "Book a session with rmm5t on Codementor!"
 
@@ -106,10 +109,6 @@ Iso639["german"].name                 # => "German"
 Iso639["GeRmAn"].name                 # => "German"
 ```
 
-## Contributing
+## Versioning
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Semantic Versioning 2.0 as defined at <http://semver.org>.
