@@ -477,6 +477,7 @@ ypk|||Yupik languages|yupik, langues
 zap|||Zapotec|zapotèque
 zbl|||Blissymbols; Blissymbolics; Bliss|symboles Bliss; Bliss
 zen|||Zenaga|zenaga
+zgh|||Standard Moroccan Tamazight|amazighe standard marocain
 zha||za|Zhuang; Chuang|zhuang; chuang
 znd|||Zande languages|zandé, langues
 zul||zu|Zulu|zoulou
