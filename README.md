@@ -18,7 +18,7 @@ If you like this project, [buy me a coffee][paypal], or [book a session with me 
 
 Bitcoin: `1rmm5tv6f997JK5bLcGbRCZyVjZUPkQ2m`
 
-[square]: https://cash.me/$rmm5t "Donate to rmm5t for open source!"
+[square]: https://cash.me/$rmm5t/5 "Donate to rmm5t for open source!"
 [paypal]: https://www.paypal.me/rmm5t/5 "Donate to rmm5t for open source!"
 [bitcoin]: bitcoin:1rmm5tv6f997JK5bLcGbRCZyVjZUPkQ2m?amount=0.01&label=Coffee%20to%20rmm5t%20for%20Open%20Source "Buy rmm5t a coffee for open source!"
 [codementor]: https://www.codementor.io/rmm5t?utm_campaign=profile&utm_source=button-rmm5t&utm_medium=shields "Book a session with rmm5t on Codementor!"
