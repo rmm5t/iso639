@@ -3,6 +3,7 @@
 [![Gem Version](http://img.shields.io/gem/v/iso639.svg)](http://badge.fury.io/rb/iso639)
 [![Build Status](https://travis-ci.org/rmm5t/iso639.svg?branch=master)](https://travis-ci.org/rmm5t/iso639)
 [![Code Climate](http://img.shields.io/codeclimate/github/rmm5t/iso639.svg)](https://codeclimate.com/github/rmm5t/iso639)
+[![Gem Downloads](https://img.shields.io/gem/dt/iso639.svg)](https://rubygems.org/gems/iso639)
 
 The iso639 gem provides convenience methods for looking up ISO-639-1 or
 ISO-639-2 language codes by their english name, 2-char, or 3-char counterpart
