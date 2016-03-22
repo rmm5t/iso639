@@ -36,7 +36,7 @@ module Iso639
   LanguagesByFrenchName = InsensitiveHash.new
 
   iso639_file = File.expand_path(File.join("..", "iso639", "ISO-639-2_utf-8.txt"), __FILE__)
-  File.readlines(iso639_file).each do |line|
+  File.readlines(iso639_file, encoding: "utf-8").each do |line|
     lang = Language.new *line.split("|")
     LanguagesByAlpha2[lang.alpha2]          = lang if lang.alpha2
     LanguagesByAlpha3[lang.alpha3]          = lang if lang.alpha3
