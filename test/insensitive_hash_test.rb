@@ -30,5 +30,7 @@ describe Iso639::InsensitiveHash do
 
     assert_equal "english", hash["en_US"]
     assert_equal "french",  hash["fr_FR"]
+    assert_equal "english", hash["en-US"]
+    assert_equal "french",  hash["fr-FR"]
   end
 end

@@ -105,7 +105,7 @@ describe Iso639 do
   it "should ignore regional designations" do
     assert_equal "en", Iso639["en_US"].alpha2
     assert_equal "en", Iso639["en_GB"].alpha2
-    assert_equal "fr", Iso639["fr_CA"].alpha2
-    assert_equal "fr", Iso639["fr_FR"].alpha2
+    assert_equal "fr", Iso639["fr-CA"].alpha2
+    assert_equal "fr", Iso639["fr-FR"].alpha2
   end
 end

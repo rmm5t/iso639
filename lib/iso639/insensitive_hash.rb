@@ -11,7 +11,7 @@ module Iso639
     private
 
     def normalize(key)
-      key.to_s.downcase.strip.split("_").first
+      key.to_s.downcase.strip.split(/[-_]/).first
     end
   end
 end
