@@ -86,6 +86,7 @@ describe Iso639 do
     assert_equal "fr", Iso639["fra"].alpha2
     assert_equal "fr", Iso639["French"].alpha2
     assert_equal "fr", Iso639["français"].alpha2
+    assert_equal "krc", Iso639["Karachay-Balkar"].alpha3
   end
 
   it "should ignore case sensitivity" do
