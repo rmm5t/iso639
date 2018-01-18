@@ -118,3 +118,7 @@ Iso639["GeRmAn"].name                 # => "German"
 ## Versioning
 
 Semantic Versioning 2.0 as defined at <http://semver.org>.
+
+## License
+
+[MIT License](https://rmm5t.mit-license.org/)
