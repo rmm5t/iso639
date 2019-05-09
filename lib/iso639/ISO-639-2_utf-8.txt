@@ -76,7 +76,7 @@ cha||ch|Chamorro|chamorro
 chb|||Chibcha|chibcha
 che||ce|Chechen|tchétchène
 chg|||Chagatai|djaghataï
-chi|zho|zh|Chinese|chinois
+chi||zh|Chinese (Simplified)|chinois
 chk|||Chuukese|chuuk
 chm|||Mari|mari
 chn|||Chinook jargon|chinook, jargon
@@ -479,6 +479,7 @@ zbl|||Blissymbols; Blissymbolics; Bliss|symboles Bliss; Bliss
 zen|||Zenaga|zenaga
 zgh|||Standard Moroccan Tamazight|amazighe standard marocain
 zha||za|Zhuang; Chuang|zhuang; chuang
+zho|||Chinese (Traditional)|chinois
 znd|||Zande languages|zandé, langues
 zul||zu|Zulu|zoulou
 zun|||Zuni|zuni
