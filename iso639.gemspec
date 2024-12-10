@@ -3,21 +3,29 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'iso639/version'
 
-Gem::Specification.new do |gem|
-  gem.name          = "iso639"
-  gem.version       = Iso639::VERSION
-  gem.authors       = ["Ryan McGeary"]
-  gem.email         = ["ryan@mcgeary.org"]
-  gem.description   = %q{ISO 639-1 and ISO 639-2 lookups by name, alpha-2 code, or alpha-3 code}
-  gem.summary       = gem.description
-  gem.homepage      = "https://github.com/rmm5t/iso639"
-  gem.license       = "MIT"
+Gem::Specification.new do |spec|
+  username           = "rmm5t"
+  spec.name          = "iso639"
+  spec.version       = Iso639::VERSION
+  spec.authors       = ["Ryan McGeary"]
+  spec.email         = ["ryan@mcgeary.org"]
+  spec.description   = %q{ISO 639-1 and ISO 639-2 lookups by name, alpha-2 code, or alpha-3 code}
+  spec.summary       = spec.description
+  spec.homepage      = "https://github.com/#{username}/#{spec.name}"
+  spec.license       = "MIT"
 
-  gem.files         = `git ls-files`.split($/)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.require_paths = ["lib"]
+  spec.files         = `git ls-files`.split($/)
+  spec.executables   = spec.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ["lib"]
 
-  gem.add_development_dependency "minitest",       "~> 5.0"
-  gem.add_development_dependency "rake",           "~> 13.0"
+  spec.metadata = {
+    "bug_tracker_uri"   => "#{spec.homepage}/issues",
+    "changelog_uri"     => "#{spec.homepage}/releases",
+    "source_code_uri"   => spec.homepage,
+    "funding_uri"       => "https://github.com/sponsors/#{username}",
+  }
+
+  spec.add_development_dependency "minitest",       "~> 5.0"
+  spec.add_development_dependency "rake",           "~> 13.0"
 end
