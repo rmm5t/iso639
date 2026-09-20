@@ -119,6 +119,48 @@ describe Iso639 do
     assert_equal "krc", Iso639["Karachay-Balkar"].alpha3
   end
 
+  it "should resolve Afar by its alpha-3 code without a byte order mark" do
+    assert_equal "aar", Iso639["aa"].alpha3
+    assert_same Iso639["aa"], Iso639["aar"]
+    assert_same Iso639["aa"], Iso639::LanguagesByAlpha3Terminology["aar"]
+  end
+
+  it "should resolve Montenegrin by code and name" do
+    lang = Iso639["cnr"]
+    refute_nil lang
+    assert_equal "Montenegrin", lang.name
+    assert_equal "monténégrin", lang.french_name
+    assert_nil lang.alpha2
+    assert_same lang, Iso639["Montenegrin"]
+    assert_same lang, Iso639["monténégrin"]
+  end
+
+  it "should resolve updated language names and aliases" do
+    assert_equal "Tlicho", Iso639["dgr"].name
+    assert_equal "dgr", Iso639["Tlicho"].alpha3
+    assert_equal "dgr", Iso639["Dogrib"].alpha3
+    assert_equal "Modern Greek (1453-)", Iso639["ell"].name
+    assert_equal "gre", Iso639["Modern Greek (1453-)"].alpha3
+    assert_equal "Wolaitta", Iso639["wal"].name
+    assert_equal "wal", Iso639["Wolaitta"].alpha3
+    assert_equal "wal", Iso639["Wolaytta"].alpha3
+    assert_equal "new", Iso639["Newar"].alpha3
+    assert_equal "new", Iso639["néwar"].alpha3
+    assert_equal "pro", Iso639["Occitan, Old (to 1500)"].alpha3
+  end
+
+  it "should retain Bihari languages without the removed alpha-2 code" do
+    assert_equal "Bihari languages", Iso639["bih"].name
+    assert_nil Iso639["bih"].alpha2
+    assert_nil Iso639["bh"]
+    assert_nil Iso639::LanguagesByAlpha2["bh"]
+  end
+
+  it "should return nil for names removed from the snapshot" do
+    assert_nil Iso639["Walamo"]
+    assert_nil Iso639["Provençal"]
+  end
+
   it "should distinguish hyphenated language names" do
     assert_equal "jpr", Iso639["Judeo-Persian"].alpha3
     assert_equal "jrb", Iso639["Judeo-Arabic"].alpha3
