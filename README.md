@@ -95,6 +95,16 @@ Iso639["deu"].name                    # => "German"
 Iso639["ger"].name                    # => "German"
 Iso639["german"].name                 # => "German"
 Iso639["GeRmAn"].name                 # => "German"
+
+# Lookup codes with locale suffixes
+Iso639["en_US"].name                  # => "English"
+Iso639["fr-CA"].name                  # => "French"
+Iso639["zh-Hant-TW"].name             # => "Chinese"
+
+# Hyphenated names are matched in full before locale suffixes are ignored
+Iso639["Judeo-Persian"].alpha3        # => "jpr"
+Iso639["Luba-Lulua"].alpha3           # => "lua"
+Iso639["bas-sorabe"].alpha3           # => "dsb"
 ```
 
 ## Versioning
