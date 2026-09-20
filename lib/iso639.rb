@@ -8,7 +8,7 @@ require "iso639/code_hash"
 # input.
 #
 # Language code mappings came from
-# http://loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt
+# https://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt
 #
 # Examples
 #

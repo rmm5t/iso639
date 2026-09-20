@@ -9,7 +9,10 @@ The iso639 gem provides convenience methods for looking up ISO-639-1 or
 ISO-639-2 language codes by their english name, 2-char, or 3-char counterpart
 
 All data was generated from the Library of Congress's list of UTF-8
-[**Codes for the Representation of Names of Languages**](http://www.loc.gov/standards/iso639-2/ascii_8bits.html).
+[**Codes for the Representation of Names of Languages**](https://www.loc.gov/standards/iso639-2/ascii_8bits.html).
+The bundled [data snapshot](https://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt)
+was retrieved on 2026-09-19 and normalized to UTF-8 without a byte order mark,
+with LF line endings and a final newline.
 
 ## Installation
 
