@@ -8,6 +8,10 @@ describe Iso639::LanguagesByAlpha2 do
     assert_equal "German", Iso639::LanguagesByAlpha2["de"].name
   end
 
+  it "should ignore regional designations" do
+    assert_equal "en", Iso639::LanguagesByAlpha2["en_US"].alpha2
+  end
+
   it "should return nil for unknown codes" do
     assert_nil Iso639::LanguagesByAlpha2["xx"]
     assert_nil Iso639::LanguagesByAlpha2["eng"]
@@ -23,6 +27,10 @@ describe Iso639::LanguagesByAlpha3Bibliographic do
     assert_equal "German", Iso639::LanguagesByAlpha3["ger"].name
   end
 
+  it "should ignore regional designations" do
+    assert_equal "fre", Iso639::LanguagesByAlpha3Bibliographic["fre-CA"].alpha3
+  end
+
   it "should return nil for unknown codes" do
     assert_nil Iso639::LanguagesByAlpha3["xxx"]
     assert_nil Iso639::LanguagesByAlpha3["en"]
@@ -34,6 +42,10 @@ describe Iso639::LanguagesByAlpha3Terminology do
   it "should return valid languages by alpha-3 terminology code" do
     assert_equal "fre",    Iso639::LanguagesByAlpha3Terminology["fra"].alpha3
     assert_equal "German", Iso639::LanguagesByAlpha3Terminology["DEU"].name
+  end
+
+  it "should ignore regional designations" do
+    assert_equal "fre", Iso639::LanguagesByAlpha3Terminology["fra_CA"].alpha3
   end
 
   it "should return valid languages by alpha-3 terminology code when it matches the bibliographic" do
@@ -58,6 +70,15 @@ describe Iso639::LanguagesByEnglishName do
     assert_equal "Klingon", Iso639::LanguagesByName["tlhIngan-Hol"].name
   end
 
+  it "should resolve every English name to its language" do
+    Iso639::LanguagesByAlpha3.each_value do |lang|
+      lang.english_names.each do |name|
+        assert_same lang, Iso639::LanguagesByEnglishName[name],
+          "Expected #{name.inspect} to resolve to #{lang.alpha3}"
+      end
+    end
+  end
+
   it "should return nil for unknown codes" do
     assert_nil Iso639::LanguagesByName["xxxxxx"]
     assert_nil Iso639::LanguagesByName["en"]
@@ -69,6 +90,15 @@ describe Iso639::LanguagesByFrenchName do
   it "should return valid languages by name" do
     assert_equal "fre",    Iso639::LanguagesByFrenchName["français"].alpha3
     assert_equal "German", Iso639::LanguagesByFrenchName["allemand"].name
+  end
+
+  it "should resolve every French name to its language" do
+    Iso639::LanguagesByAlpha3.each_value do |lang|
+      lang.french_names.each do |name|
+        assert_same lang, Iso639::LanguagesByFrenchName[name],
+          "Expected #{name.inspect} to resolve to #{lang.alpha3}"
+      end
+    end
   end
 
   it "should return nil for unknown codes" do
@@ -87,6 +117,38 @@ describe Iso639 do
     assert_equal "fr", Iso639["French"].alpha2
     assert_equal "fr", Iso639["français"].alpha2
     assert_equal "krc", Iso639["Karachay-Balkar"].alpha3
+  end
+
+  it "should distinguish hyphenated language names" do
+    assert_equal "jpr", Iso639["Judeo-Persian"].alpha3
+    assert_equal "jrb", Iso639["Judeo-Arabic"].alpha3
+    assert_equal "lua", Iso639["Luba-Lulua"].alpha3
+    assert_equal "lub", Iso639["Luba-Katanga"].alpha3
+    assert_equal "jpr", Iso639[" JUDÉO-PERSAN\t"].alpha3
+    assert_equal "jrb", Iso639["judéo-arabe"].alpha3
+    assert_equal "lad", Iso639["judéo-espagnol"].alpha3
+    assert_equal "lua", Iso639["luba-lulua"].alpha3
+    assert_equal "inc", Iso639["indo-aryennes, langues"].alpha3
+    assert_equal "ine", Iso639["indo-européennes, langues"].alpha3
+  end
+
+  it "should prefer complete language names to locale prefixes" do
+    assert_equal "mkh", Iso639["Mon-Khmer languages"].alpha3
+    assert_equal "dsb", Iso639["bas-sorabe"].alpha3
+  end
+
+  it "should prefer exact codes to matching language names" do
+    assert_equal "gle", Iso639["Ga"].alpha3
+    assert_equal "gaa", Iso639::LanguagesByName["Ga"].alpha3
+  end
+
+  it "should return nil for incomplete or unknown hyphenated names" do
+    assert_nil Iso639["Judeo"]
+    assert_nil Iso639["Judeo-Unknown"]
+    assert_nil Iso639["Karachay"]
+    assert_nil Iso639["Karachay-Unknown"]
+    assert_nil Iso639["English-Unknown"]
+    assert_nil Iso639["English_Unknown"]
   end
 
   it "should ignore case sensitivity" do
@@ -108,5 +170,9 @@ describe Iso639 do
     assert_equal "en", Iso639["en_GB"].alpha2
     assert_equal "fr", Iso639["fr-CA"].alpha2
     assert_equal "fr", Iso639["fr-FR"].alpha2
+    assert_equal "en", Iso639[" ENG_us\t"].alpha2
+    assert_equal "fr", Iso639["fre-CA"].alpha2
+    assert_equal "fr", Iso639["fra_CA"].alpha2
+    assert_equal "zh", Iso639["zh-Hant-TW"].alpha2
   end
 end

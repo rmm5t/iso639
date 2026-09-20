@@ -1,6 +1,7 @@
 require "iso639/version"
 require "iso639/language"
 require "iso639/insensitive_hash"
+require "iso639/code_hash"
 
 # Public: Various methods useful for performing ISO-639 language code lookup
 # either given their ISO-639-1 or ISO-639-2 character code value or from human
@@ -29,9 +30,9 @@ require "iso639/insensitive_hash"
 #   Iso639["German"].english_name         # => "German"
 #   Iso639["German"].french_name          # => "allemand"
 module Iso639
-  LanguagesByAlpha2 = InsensitiveHash.new
-  LanguagesByAlpha3Bibliographic = LanguagesByAlpha3 = InsensitiveHash.new
-  LanguagesByAlpha3Terminology = InsensitiveHash.new
+  LanguagesByAlpha2 = CodeHash.new
+  LanguagesByAlpha3Bibliographic = LanguagesByAlpha3 = CodeHash.new
+  LanguagesByAlpha3Terminology = CodeHash.new
   LanguagesByEnglishName = LanguagesByName = InsensitiveHash.new
   LanguagesByFrenchName = InsensitiveHash.new
 
@@ -59,10 +60,16 @@ module Iso639
   #
   # Returns an Iso639::Language object
   def self.[](lookup)
-    LanguagesByAlpha2[lookup] ||
-      LanguagesByAlpha3Bibliographic[lookup] ||
-      LanguagesByAlpha3Terminology[lookup] ||
+    lookup = lookup.to_s.downcase.strip
+
+    # Prefer exact codes and complete names before ignoring locale suffixes.
+    LanguagesByAlpha2.fetch(lookup, nil) ||
+      LanguagesByAlpha3Bibliographic.fetch(lookup, nil) ||
+      LanguagesByAlpha3Terminology.fetch(lookup, nil) ||
       LanguagesByEnglishName[lookup] ||
-      LanguagesByFrenchName[lookup]
+      LanguagesByFrenchName[lookup] ||
+      LanguagesByAlpha2[lookup] ||
+      LanguagesByAlpha3Bibliographic[lookup] ||
+      LanguagesByAlpha3Terminology[lookup]
   end
 end

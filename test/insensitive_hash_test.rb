@@ -23,14 +23,16 @@ describe Iso639::InsensitiveHash do
     assert_equal "last thing",    hash["baz"]
   end
 
-  it "should return results ignoring regional designators" do
+  it "should preserve hyphens and underscores in keys" do
     hash = Iso639::InsensitiveHash.new
-    hash["en_GB"] = "english"
-    hash["fr_CA"] = "french"
+    hash["Judeo-Persian"] = "jpr"
+    hash["Judeo-Arabic"] = "jrb"
+    hash["Judeo_Persian"] = "underscore"
 
-    assert_equal "english", hash["en_US"]
-    assert_equal "french",  hash["fr_FR"]
-    assert_equal "english", hash["en-US"]
-    assert_equal "french",  hash["fr-FR"]
+    assert_equal "jpr",        hash[" JUDEO-PERSIAN "]
+    assert_equal "jrb",        hash["judeo-arabic"]
+    assert_equal "underscore", hash["judeo_persian"]
+    assert_nil hash["Judeo"]
+    assert_nil hash["Judeo-Unknown"]
   end
 end
