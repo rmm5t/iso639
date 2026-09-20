@@ -41,3 +41,8 @@ Syntax:
 * `MyClass.my_method(my_arg)` not `my_method( my_arg )` or `my_method my_arg`.
 * `a = b` not `a=b`.
 * Follow the conventions you see used in the source already.
+
+## Updating language data
+
+Run `bundle exec rake data:update` to refresh the Library of Congress snapshot.
+Review the diff and run `bundle exec rake` before committing.
